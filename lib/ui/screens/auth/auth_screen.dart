@@ -12,6 +12,7 @@ class AuthScreen extends StatefulWidget {
 
 class _AuthScreenState extends State<AuthScreen> {
   bool showPassword = true;
+  bool rememberMe = false;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class _AuthScreenState extends State<AuthScreen> {
               elevation: 10,
               child: Container(
                 width: 550,
-                height: 350,
+                height: 300,
                 padding: const EdgeInsets.all(16.0),
                 child: Form(
                   child: Column(
@@ -57,10 +58,34 @@ class _AuthScreenState extends State<AuthScreen> {
                                 });
                               },
                               icon: Icon(showPassword
-                                  ?CupertinoIcons.eye_fill
-                                  :  CupertinoIcons.eye_slash_fill),
+                                  ? CupertinoIcons.eye_fill
+                                  : CupertinoIcons.eye_slash_fill),
                             )),
                       ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      Row(
+                        children: [
+                          Checkbox(
+                              value: rememberMe,
+                              onChanged: (value) {
+                                setState(() {
+                                  rememberMe = !rememberMe;
+                                });
+                              }),
+                          Text(
+                            'Remeber me',
+                          )
+                        ],
+                      ),
+                      Spacer(),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text('Login'),
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: Size.fromHeight(48)),
+                      )
                     ],
                   ),
                 ),
